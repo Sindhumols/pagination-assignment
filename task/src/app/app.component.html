@@ -1,0 +1,32 @@
+
+<div style="text-align:center">
+  <h4>
+    Basic Pagination
+  </h4>
+<button (click)="getUsers()" class="btn btn-danger" >GET Data</button>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+       <th>login</th>
+       <th>id</th>
+        <th>followers_url</th> 
+        <th>title</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of data | paginate: {id: 'listing_pagination',
+      itemsPerPage: 10,
+      currentPage:page,
+      totalItems:total_count} ">
+      <td>{{user.user.login}}</td>
+      <td>{{user.id}}</td>
+        <td>{{user.user.followers_url}}</td>
+        <td>{{user.title}}</td>
+      
+      </tr>
+    </tbody>
+  </table>
+
+  <pagination-controls id ="listing_pagination" maxSize="5" directionalLinks="true" (pageChange)="page =$event"></pagination-controls>
+</div>
